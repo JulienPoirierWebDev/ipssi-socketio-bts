@@ -2,7 +2,6 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-
   height: 100vh;
   background: black;
 }
@@ -13,7 +12,7 @@ body {
   min-height: 100vh;
 }
 
-.chat  {
+.chat {
   grid-column: 2/3;
   position: relative;
   background-color: grey;
@@ -26,8 +25,7 @@ body {
 
 .chat form {
   position: absolute;
-  bottom : 0
-
+  bottom: 0;
 }
 
 .scene {
@@ -70,17 +68,16 @@ body {
   transform: rotateY(0.5turn);
 }
 
-.flip{
+.flip {
   transform: rotateY(0.5turn);
 }
 
 .card {
-  border : 2px solid white;
-
+  border: 2px solid white;
 }
 
-.card>* {
-    display:flex;
-  justify-content:center;
+.card > * {
+  display: flex;
+  justify-content: center;
   align-items: center;
 }

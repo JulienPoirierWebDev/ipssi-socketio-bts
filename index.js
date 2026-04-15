@@ -8,6 +8,8 @@ const app = express();
 const server = createServer(app);
 const io = new Server(server);
 
+const inMemoryDB = [];
+
 app.use(express.static(path.join(__dirname, "public")));
 
 app.get("/", async (request, response) => {
@@ -22,11 +24,12 @@ app.get("/", async (request, response) => {
 });
 
 io.on("connection", (socket) => {
-  console.log("un utilisateur", socket.id);
+  io.to(socket.id).emit("chat:init", inMemoryDB);
 
-  socket.on("chat:message", (data) => {
-    console.log(data);
-    io.emit("chat:message", data);
+  socket.on("chat:message", (message, pseudo) => {
+    inMemoryDB.push({ pseudo, message });
+    console.log(message, pseudo);
+    io.emit("chat:message", message, pseudo);
   });
 });
 
@@ -37,3 +40,7 @@ server.listen(3000, (err) => {
 
   console.log("Le serveur est lancé sur le port 3000");
 });
+
+// Comment faire pour identifier l'utilisateur lors de l'envoi du message ?
+// Comment faire pour qu'un utilisateur qui arrive en cours de conversation puisse
+// récupérer l'ensemble des messages ?
