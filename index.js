@@ -2,13 +2,13 @@ const express = require("express");
 const { createServer } = require("http");
 const fs = require("fs").promises;
 const path = require("path");
-const {Server} = require("socket.io");
+const { Server } = require("socket.io");
 
 const app = express();
 const server = createServer(app);
-const io = new Server(server)
+const io = new Server(server);
 
-app.use(express.static(path.join(__dirname, "public")))
+app.use(express.static(path.join(__dirname, "public")));
 
 app.get("/", async (request, response) => {
   try {
@@ -22,13 +22,17 @@ app.get("/", async (request, response) => {
 });
 
 io.on("connection", (socket) => {
-  console.log("un utilisateur", socket.id)
-})
+  console.log("un utilisateur", socket.id);
+
+  socket.on("chat:message", (data) => {
+    console.log(data);
+    io.emit("chat:message", data);
+  });
+});
 
 server.listen(3000, (err) => {
-
   if (err) {
-      return console.log(err);
+    return console.log(err);
   }
 
   console.log("Le serveur est lancé sur le port 3000");
