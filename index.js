@@ -4,6 +4,10 @@ const path = require("path");
 
 const app = express();
 
+let count = 0;
+
+app.use(express.static('public'))
+
 app.get("/", async (request, response) => {
   try {
     const myPath = path.join(__dirname, "pages/index.html");
