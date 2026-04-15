@@ -1,12 +1,14 @@
 const express = require("express");
+const { createServer } = require("http");
 const fs = require("fs").promises;
 const path = require("path");
+const {Server} = require("socket.io");
 
 const app = express();
+const server = createServer(app);
+const io = new Server(server)
 
-let count = 0;
-
-app.use(express.static('public'))
+app.use(express.static(path.join(__dirname, "public")))
 
 app.get("/", async (request, response) => {
   try {
@@ -19,15 +21,11 @@ app.get("/", async (request, response) => {
   }
 });
 
-
-app.get("/contact", (request, response) => {
-
-  console.log("hello");
-  response.json({message: "Contact"})
+io.on("connection", (socket) => {
+  console.log("un utilisateur", socket.id)
 })
 
-
-app.listen(3000, (err) => {
+server.listen(3000, (err) => {
 
   if (err) {
       return console.log(err);

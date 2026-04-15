@@ -1,12 +1,37 @@
 body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
   height: 100vh;
   background: black;
 }
 
+.wrapper {
+  display: grid;
+  grid-template-columns: 1fr 400px;
+  min-height: 100vh;
+}
+
+.chat  {
+  grid-column: 2/3;
+  position: relative;
+  background-color: grey;
+}
+
+.chat .messages {
+  background-color: azure;
+  min-height: 90vh;
+}
+
+.chat form {
+  position: absolute;
+  bottom : 0
+
+}
+
 .scene {
+  grid-column: 1/2;
   width: 1000px;
   display: flex;
   justify-content: space-between;

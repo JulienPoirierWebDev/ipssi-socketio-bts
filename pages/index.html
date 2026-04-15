@@ -5,50 +5,51 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <link rel="stylesheet" href="index.css">
+  <script src="/script.js" defer></script>
+  <script src="https://cdn.socket.io/4.8.3/socket.io.min.js" ></script>
 </head>
 <body>
-  <div class="scene">
 
- <div class="card">
-    <div class="card__face card__face--front">
-      CARD
+
+  <div class="wrapper">
+    <div class="scene">
+
+    <div class="card">
+        <div class="card__face card__face--front">
+          CARD
+        </div>
+        <div class="card__face card__face--back">
+        X
+        </div>
     </div>
-    <div class="card__face card__face--back">
-     X
+
+    <div class="card">
+      <div class="card__face card__face--front">
+        CARD
+      </div>
+      <div class="card__face card__face--back">
+      X
+      </div>
     </div>
- </div>
-
-
-
-   <div class="card">
-    <div class="card__face card__face--front">
-      CARD
+    <div class="card">
+      <div class="card__face card__face--front">
+        CARD
+      </div>
+      <div class="card__face card__face--back">
+      X
+      </div>
     </div>
-    <div class="card__face card__face--back">
-     X
+
+  </div>
+    <div class="chat">
+      <div class="messages"></div>
+      <form action="">
+        <label for="message">Nouveau message</label>
+        <input type="text" id="message" name="message">
+        <input type="submit" value="Envoyer le message">
+      </form>
     </div>
   </div>
-   <div class="card">
-    <div class="card__face card__face--front">
-      CARD
-    </div>
-    <div class="card__face card__face--back">
-     X
-    </div>
-  </div>
-</div>
-
 </body>
 
-<script>
-  const cards = document.querySelectorAll(".card");
-
-  cards.forEach((oneCard) => {
-    oneCard.addEventListener('click', (event) => {
-      event.preventDefault();
-      oneCard.classList.toggle("flip")
-    })
-  })
-
-</script>
 </html>
