@@ -16,6 +16,13 @@ app.get("/", async (request, response) => {
 });
 
 
+app.get("/contact", (request, response) => {
+
+  console.log("hello");
+  response.json({message: "Contact"})
+})
+
+
 app.listen(3000, (err) => {
 
   if (err) {

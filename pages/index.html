@@ -4,8 +4,48 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <link rel="stylesheet" href="index.css">
 </head>
 <body>
-  <h1>je suis une page html</h1>
+  <div class="scene">
+
+ <div class="card">
+    <div class="card__face card__face--front">
+      CARD
+    </div>
+    <div class="card__face card__face--back">
+     X
+    </div>
+  </div>
+   <div class="card">
+    <div class="card__face card__face--front">
+      CARD
+    </div>
+    <div class="card__face card__face--back">
+     X
+    </div>
+  </div>
+   <div class="card">
+    <div class="card__face card__face--front">
+      CARD
+    </div>
+    <div class="card__face card__face--back">
+     X
+    </div>
+  </div>
+</div>
+
 </body>
+
+<script>
+  const cards = document.querySelectorAll(".card");
+
+  cards.forEach((oneCard) => {
+    oneCard.addEventListener('click', (event) => {
+      event.preventDefault();
+      oneCard.classList.toggle("flip")
+    })
+  })
+
+</script>
 </html>
